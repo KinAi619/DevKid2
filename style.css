@@ -441,9 +441,11 @@ section {
 
 .sign_up__section {
     background-image: url(./img/sign_up_bg.jpg);
-    border-radius: 16px;
+    background-color: #6193f7;
     position: relative;
     z-index: 1;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .sign_up_section_container {
@@ -912,16 +914,18 @@ section {
 }
 
 .promo_container {
-    padding: 62px 156px;
+    padding: 55px 156px;
     background-image: url(./img/promo_bg.jpg);
     text-align: center;
     margin-bottom: 23px;
+    border: #1e1e1e 1px solid;
+    border-radius: 20px;
 }
 
 .promo__p {
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 31px;
+    margin-bottom: 30px;
 }
 
 .promo__display {
@@ -948,13 +952,16 @@ section {
     padding: 25px 4px 25px 0;
     border-top: 2px solid #9abcff;
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
 .faq__qa__container {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    outline: none;
 }
 
 .faq__question {
@@ -970,8 +977,34 @@ section {
     max-height: 0;
     overflow: hidden;
     margin-right: 40px;
-
     transition: all 0.3s ease-in-out;
+}
+
+.faq__article__svg {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    min-width: 42px;
+    height: 42px;
+}
+
+.faq__article__svg > rect:first-child {
+    transition: all 0.3s ease-in-out;
+}
+
+.faq__qa__container:hover .faq__question {
+    color: #0f65ac;
+}
+
+.faq__article__svg:hover > rect:first-child {
+    fill: #0f65ac;
+}
+
+.faq__qa__container:focus .faq__question {
+    color: #0f65ac;
+}
+
+.faq__qa__container:focus ~ .faq__article__svg > rect:first-child {
+    fill: #0f65ac;
 }
 
 .faq__question__active {
@@ -980,13 +1013,6 @@ section {
 
 .faq__answer__active {
     max-height: 3em;
-}
-
-.faq__article__svg {
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    min-width: 42px;
-    height: 42px;
 }
 
 .faq__article__svg__active {
