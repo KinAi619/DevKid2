@@ -82,7 +82,9 @@
                         >devkid-school@mail.ru</a
                     >
                 </div>
-                <button class="btn btn__head">Попробовать бесплатно</button>
+                <button class="btn btn_sign_up btn__head">
+                    Попробовать бесплатно
+                </button>
             </div>
             <nav>
                 <a class="nav_link nav_link__active" href="#">Главная</a
@@ -96,6 +98,106 @@
                 ><a class="nav_link" href="#">Секция 8</a>
             </nav>
         </header>
+
+        <!-- Модальное окно -->
+        <div tabindex="0" role="button" class="modal">
+            <div class="modal_overlay"></div>
+            <div class="modal_content" tabindex="0" role="button">
+                <button
+                    type="button"
+                    class="close_btn"
+                    aria-label="Закрыть модальное окно"
+                >
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M1 15L15 1.25071"
+                            stroke="#3579F4"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                        />
+                        <path
+                            d="M1 1L15 14.7493"
+                            stroke="#3579F4"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+                </button>
+
+                <h3 class="modal__header">
+                    Оставьте свои контакты для связи и получите консультацию от
+                    наших специалистов
+                </h3>
+                <p class="modal__header_descr">
+                    Оставьте заявку, и мы рассчитаем самый благоприятный график
+                    для лекции.
+                </p>
+
+                <form class="modal__form" action="#">
+                    <div class="modal__input_group">
+                        <label class="modal__label" for="modal__input_name"
+                            >Введите ваше имя</label
+                        >
+                        <input
+                            required
+                            placeholder="Введите ваше имя"
+                            class="modal__input"
+                            type="text"
+                            id="modal__input_name"
+                        />
+                    </div>
+                    <div class="modal__input_group">
+                        <label class="modal__label" for="modal__input_phone"
+                            >Введите номер телефона</label
+                        >
+                        <input
+                            required
+                            placeholder="+7 (___) ___-__-__"
+                            class="modal__input input__tel"
+                            type="tel"
+                            id="modal__input_phone"
+                            maxlength="18"
+                        />
+                    </div>
+                    <div class="modal__comment_field">
+                        <label
+                            class="modal__label modal__textarea_label"
+                            for="modal__comment"
+                        >
+                            * Ваш Комментарий &nbsp;
+                            <em class="modal__label__hint">(не обязательно)</em>
+                        </label>
+                        <textarea
+                            class="modal__input"
+                            name="modal__comment"
+                            id="modal__comment"
+                            bind:value="{comment}"
+                            placeholder="Комментарий..."
+                            aria-describedby="comment-hint"
+                            rows="4"
+                        >
+                        </textarea>
+                    </div>
+
+                    <div class="modal__btn_group">
+                        <button class="btn modal__btn" type="submit">
+                            Попробовать бесплатно
+                        </button>
+                        <p class="modal__btn_descr">
+                            Нажимая кнопку вы соглашаетесь с политикой
+                            конфиденциальности
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <main>
             <!-- hero -->
             <section>
@@ -1242,6 +1344,7 @@
                 </div>
             </section>
         </main>
+
         <footer class="footer">
             <div class="footer_container">
                 <div class="footer__left_side">
@@ -1392,6 +1495,7 @@
                 </div>
             </div>
         </footer>
+
         <script defer type="module" src="./main.js"></script>
     </body>
 </html>
