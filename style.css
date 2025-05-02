@@ -1203,7 +1203,8 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 50;
+    
 
     display: none;
     opacity: 0;
@@ -1218,6 +1219,7 @@ section {
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 101;
+
 }
 
 .modal_active {
@@ -1233,6 +1235,7 @@ section {
     position: relative;
     font-family: Mulish;
     z-index: 102;
+    max-width: 940px;
 }
 
 .close_btn {
