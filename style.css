@@ -303,8 +303,8 @@ section {
 }
 
 .carousel_container {
-    display: flex;
-    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
 }
 
 .carousel__descr {
@@ -324,6 +324,11 @@ section {
     outline: none;
 }
 
+.carousel__btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .carousel__btn__svg {
     transition: all 0.2s ease-in-out;
 }
@@ -341,15 +346,29 @@ section {
 }
 
 .carousel__cards_container {
-    width: 100%;
     display: flex;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    gap: 20px;
+    transition: all 0.5s ease-in-out;
 }
 
 .carousel__card {
     width: 270px;
     border-radius: 20px;
+
+    flex: 0 0 calc(33.333% - 20px);
+    transition: all 0.3s ease-in-out;
+
+    /*    @media (max-width: 1024px) {
+        .carousel__card {
+          flex: 0 0 calc(50% - 20px);
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .carousel__card {
+          flex: 0 0 100%;
+        }
+      } */
 }
 
 .carousel__card:not(:last-child) {
@@ -673,6 +692,8 @@ section {
 
 .teachers_section_container {
     font-family: Montserrat;
+    position: relative;
+    overflow: hidden;
 }
 
 .teachers__descr {
@@ -684,32 +705,42 @@ section {
 .teachers__carousel_container {
     position: relative;
     display: flex;
-    overflow-y: hidden;
-    overflow-x: scroll;
     padding-bottom: 200px;
     z-index: 3;
+    gap: 20px;
+    will-change: transform;
 }
 
 .teachers__card {
-    width: 270px;
-    height: 302px;
     position: relative;
     font-family: Montserrat;
-    margin-right: 17px;
     background-image: url(./img/teachers__card_bottom_1.jpg);
     border-radius: 10px;
     cursor: pointer;
+    flex: 0 0 calc(25% - 15px);
     transition: all 0.3s ease-in-out;
     z-index: 5;
 }
 
-.teachers__card:last-child {
-    margin-right: 0;
-}
+/* @media (max-width: 1200px) {
+    .teachers__card {
+      flex: 0 0 calc(33.333% - 15px); 
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .teachers__card {
+      flex: 0 0 calc(50% - 15px);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .teachers__card {
+      flex: 0 0 100%; 
+    }
+  } */
 
 .teachers__card__top {
-    width: 270px;
-    height: 100%;
     padding: 22px 20px 22px 20px;
     border-radius: 10px;
     border: 1px solid #b8b8b8;
@@ -736,7 +767,6 @@ section {
 .teachers__card__img {
     display: block;
     margin: auto;
-
     margin-bottom: 8px;
 }
 
@@ -1204,7 +1234,6 @@ section {
     justify-content: center;
     align-items: center;
     z-index: 50;
-    
 
     display: none;
     opacity: 0;
@@ -1219,7 +1248,6 @@ section {
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 101;
-
 }
 
 .modal_active {
