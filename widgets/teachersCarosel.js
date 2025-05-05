@@ -24,62 +24,75 @@ export class TeachersCarousel {
         this.currentIndex = 0;
         this.interval = null;
         this.isPaused = false;
+        this.isAnimating = false;
+        this.gap = parseInt(getComputedStyle(this.carouselContainer).gap) || 20; // Получаем отступ между карточками
 
-        this._cloneCards();
+        this._prepareCarousel();
         this._initCarousel();
         this._setupEventListeners();
         this._handleResponsive();
     }
 
-    _cloneCards() {
+    _prepareCarousel() {
         // Клонируем карточки для бесконечного эффекта
         const clones = this.cards.map((card) => card.cloneNode(true));
         clones.forEach((clone) => {
             clone.classList.add("teachers__card--clone");
             this.carouselContainer.appendChild(clone);
         });
+
+        // Обновляем список карточек
+        this.allCards = Array.from(
+            this.carouselContainer.querySelectorAll(".teachers__card")
+        );
     }
 
     _initCarousel() {
         this.cardWidth = this.cards[0].offsetWidth;
         this.carouselContainer.style.display = "flex";
         this.carouselContainer.style.transition = `transform ${this.options.animationSpeed}ms ease`;
-        this._updateCarousel();
+        this._updatePosition();
         this._startAutoSlide();
     }
 
-    _updateCarousel() {
-        const offset = -this.currentIndex * this.cardWidth;
+    _updatePosition() {
+        const offset = -this.currentIndex * (this.cardWidth + this.gap);
         this.carouselContainer.style.transform = `translateX(${offset}px)`;
     }
 
     _nextSlide() {
+        if (this.isAnimating || this.isPaused) return;
+
+        this.isAnimating = true;
         this.currentIndex++;
 
-        // Плавный переход к следующему слайду
-        this._updateCarousel();
+        this._updatePosition();
 
-        // Если дошли до конца - мгновенно (без анимации) переходим в начало
+        // Когда доходим до конца клонов, мгновенно переходим в начало
         if (this.currentIndex >= this.cards.length) {
             setTimeout(() => {
                 this.carouselContainer.style.transition = "none";
                 this.currentIndex = 0;
-                this._updateCarousel();
+                this._updatePosition();
 
-                // Возвращаем анимацию
+                // Восстанавливаем анимацию после перехода
                 setTimeout(() => {
                     this.carouselContainer.style.transition = `transform ${this.options.animationSpeed}ms ease`;
+                    this.isAnimating = false;
                 }, 20);
+            }, this.options.animationSpeed);
+        } else {
+            setTimeout(() => {
+                this.isAnimating = false;
             }, this.options.animationSpeed);
         }
     }
 
     _startAutoSlide() {
-        this.interval = setInterval(() => {
-            if (!this.isPaused) {
-                this._nextSlide();
-            }
-        }, this.options.slideInterval);
+        this.interval = setInterval(
+            () => this._nextSlide(),
+            this.options.slideInterval
+        );
     }
 
     _stopAutoSlide() {
@@ -87,20 +100,19 @@ export class TeachersCarousel {
     }
 
     _setupEventListeners() {
-        // Пауза при наведении
         this.carouselContainer.addEventListener("mouseenter", () => {
             this.isPaused = true;
         });
 
-        // Возобновление при уходе курсора
         this.carouselContainer.addEventListener("mouseleave", () => {
             this.isPaused = false;
         });
 
-        // Обработка изменения размера окна
         window.addEventListener("resize", () => {
             this.cardWidth = this.cards[0].offsetWidth;
-            this._updateCarousel();
+            this.gap =
+                parseInt(getComputedStyle(this.carouselContainer).gap) || 20;
+            this._updatePosition();
             this._handleResponsive();
         });
     }
@@ -117,7 +129,7 @@ export class TeachersCarousel {
 
         if (slidesToShow !== this.options.slidesToShow) {
             this.options.slidesToShow = slidesToShow;
-            this._updateCarousel();
+            this._updatePosition();
         }
     }
 }
