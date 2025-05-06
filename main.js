@@ -3,6 +3,17 @@ import { faq } from "./widgets/faq.js";
 import { modal } from "./widgets/modal.js";
 import { Carousel } from "./widgets/carousel.js";
 import { TeachersCarousel } from "./widgets/teachersCarosel.js";
+import { SmoothScroll } from "./widgets/smoothScroll.js";
+
+const smoothScroll = new SmoothScroll({
+    selector: 'a[href^="#"]', // Все ссылки с якорями
+    offset: 100, // Например, высота фиксированного хедера
+    duration: 800, // Длительность анимации в мс
+    easing: "easeInOutQuad", // Тип анимации
+});
+
+// Если нужно обновить смещение (например, после загрузки страницы)
+// smoothScroll.updateOffset(150);
 
 // Инициализация карусели
 const teachersCarousel = new TeachersCarousel(".teachers_section_container", {
@@ -22,8 +33,8 @@ const carousel = new Carousel(".carousel_container", {
     slidesToScroll: 1,
     infinite: false,
     responsive: [
-        { breakpoint: 1024, slidesToShow: 2 },
-        { breakpoint: 768, slidesToShow: 1 },
+        { breakpoint: 900, slidesToShow: 2 },
+        { breakpoint: 576, slidesToShow: 1 },
     ],
 });
 

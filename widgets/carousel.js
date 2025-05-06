@@ -8,8 +8,8 @@ export class Carousel {
             slidesToScroll: 1,
             infinite: false,
             responsive: [
-                { breakpoint: 1024, slidesToShow: 2 },
-                { breakpoint: 768, slidesToShow: 1 },
+                { breakpoint: 900, slidesToShow: 2 },
+                { breakpoint: 576, slidesToShow: 1 },
             ],
             ...options,
         };

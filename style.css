@@ -189,6 +189,7 @@ section {
     letter-spacing: -0.05em;
     color: var(--main-color);
     margin-bottom: 23px;
+    padding-right: 40px;
 }
 
 .section__p {
@@ -358,13 +359,13 @@ section {
     flex: 0 0 calc(33.333% - 20px);
     transition: all 0.3s ease-in-out;
 
-    /*    @media (max-width: 1024px) {
+    /*    @media (max-width: 900px) {
         .carousel__card {
           flex: 0 0 calc(50% - 20px);
         }
       }
       
-      @media (max-width: 768px) {
+      @media (max-width: 576px) {
         .carousel__card {
           flex: 0 0 100%;
         }
@@ -1003,6 +1004,7 @@ section {
     font-weight: 600;
     font-size: 22px;
     transition: all 0.3s ease-in-out;
+    padding-right: 20px;
 }
 
 .faq__answer {
@@ -1372,4 +1374,41 @@ section {
     color: #1e1e1e69;
     max-width: 350px;
     margin-left: 20px;
+}
+
+@media (max-width: 1200px) {
+    .motivation_section_container {
+        background: linear-gradient(-225deg, #6193f7, #2761ca);
+    }
+}
+
+@media (max-width: 1024px) {
+    .course__card {
+        width: calc((100% - 20px) / 2);
+    }
+
+    .course__card:nth-child(3n) {
+        margin-right: 20px;
+    }
+
+    .course__card:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    .motivation_section_container {
+        padding: 55px 100px 40px 100px;
+    }
+
+    .motivation__quotation_marks_left {
+        left: 50px;
+    }
+
+    .motivation__quotation_marks_right {
+        bottom: 90px;
+        right: 50px;
+    }
+
+    .promo_container {
+        background: linear-gradient(335deg, #cfeaff, #f4fcff);
+    }
 }
