@@ -1383,6 +1383,15 @@ section {
 }
 
 @media (max-width: 1024px) {
+    nav {
+        overflow-x: scroll;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .nav_link {
+        white-space: nowrap;
+    }
     .course__card {
         width: calc((100% - 20px) / 2);
     }
@@ -1410,5 +1419,208 @@ section {
 
     .promo_container {
         background: linear-gradient(335deg, #cfeaff, #f4fcff);
+    }
+
+    .sign_up__section {
+        background-color: #3579f4;
+    }
+}
+
+@media (max-width: 910px) {
+    .hero__right_side {
+        display: none;
+    }
+
+    .sign_up__section {
+        background-image: none;
+    }
+
+    .sign_up_section_container {
+        flex-direction: column;
+    }
+
+    .sign_up__header {
+        width: 100%;
+    }
+
+    .sign_up__left_side {
+        margin-bottom: 30px;
+    }
+
+    .sign_up__btn_container {
+        background-color: #fff;
+    }
+
+    .sign_up__btn {
+        background-color: #6193f7;
+    }
+
+    .sign_up__left_side_descr {
+        max-width: 100%;
+    }
+
+    .sign_up__right_side {
+        width: fit-content;
+        align-self: center;
+    }
+
+    .questions__p {
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .questions_descr {
+        max-width: 100%;
+    }
+
+    .questions__right_side {
+        width: fit-content;
+        align-self: center;
+    }
+
+    .advantages__card__header {
+        height: 90px;
+    }
+
+    .teams__advantages_container {
+        flex-direction: column;
+    }
+
+    .teams__advantage {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .teams__advantage:last-child {
+        margin-bottom: 0;
+    }
+
+    .price_container {
+        flex-direction: column;
+    }
+
+    .price__block {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section__header {
+        font-size: 35px;
+    }
+
+    .sign_up__header {
+        font-size: 35px;
+    }
+
+    .motivation_header {
+        font-size: 30px;
+    }
+
+    .motivation_section_container {
+        padding: 55px 50px 40px 50px;
+    }
+
+    .motivation__quotation_marks_left {
+        left: 10px;
+    }
+
+    .motivation__quotation_marks_right {
+        right: 10px;
+    }
+
+    .top__head {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .main_logo {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 15px;
+        font-size: 12px;
+    }
+
+    .hero__p {
+        width: 100%;
+    }
+
+    .under_hero_section {
+        flex-direction: column;
+    }
+
+    .under_hero__article {
+        width: 100%;
+    }
+
+    .course__card {
+        width: 100%;
+    }
+
+    .advantages_container {
+        flex-direction: column;
+    }
+
+    .advantages__card {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .advantages__card:nth-last-child(-n + 2) {
+        margin-bottom: 20px;
+    }
+
+    .advantages__card:last-child {
+        margin-bottom: 0;
+    }
+
+    .price__block__month {
+        padding: 6px 20px;
+    }
+
+    .promo_container {
+        padding: 40px 50px;
+    }
+
+    .questions__svg {
+        display: none;
+    }
+
+    .footer_container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer__input__container {
+        margin-bottom: 15px;
+    }
+
+    .soc_link__footer {
+        margin: 0 auto;
+    }
+
+    .sign_up__form::after {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero__left_side {
+        width: 100%;
+    }
+
+    .teams__little_advantage {
+        font-size: 14px;
+        padding: 10px 20px 10px 15px;
+    }
+
+    .section__header {
+        font-size: 25px;
     }
 }
