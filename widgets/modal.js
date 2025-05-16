@@ -1,13 +1,16 @@
 export function modal() {
-    const openModalButton = document.querySelector(".btn_sign_up");
+    const openModalButtons = document.querySelectorAll(".btn_sign_up");
     const modal = document.querySelector(".modal");
     const modalOverlay = document.querySelector(".modal_overlay");
     const inputTel = document.querySelector(".input__tel");
     const closeModalButton = document.querySelector(".close_btn");
     const inputName = document.querySelector(".input__name");
+    const modalForm = document.querySelector(".modal__form");
 
-    openModalButton.addEventListener("click", () => {
-        modal.classList.add("modal_active");
+    openModalButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            modal.classList.add("modal_active");
+        });
     });
 
     modalOverlay.addEventListener("click", () => {
@@ -94,5 +97,29 @@ export function modal() {
 
         // Собираем обратно в строку
         e.target.value = formattedWords.join(" ");
+    });
+
+    modalForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const name = document.querySelector(".input__name").value.trim();
+        const phone = document.querySelector(".input__tel").value.trim();
+        const comment = document.querySelector("#modal__comment").value.trim();
+
+        try {
+            const response = await fetch("http://localhost:3001/api/requests", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, phone, comment }),
+            });
+
+            if (response.ok) {
+                modalForm.reset();
+                alert("Заявка отправлена!");
+            } else {
+                alert("Ошибка отправки!");
+            }
+        } catch (err) {
+            alert("Ошибка соединения с сервером!");
+        }
     });
 }

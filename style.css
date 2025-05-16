@@ -148,12 +148,24 @@ section {
     padding-right: 30px;
     color: #808080;
     font-family: Mulish;
-    opacity: 1;
+    transition: all 0.2s ease-in-out;
 }
 
 .nav_link__active {
     color: var(--main-color);
-    opacity: 1;
+}
+
+.nav_link:hover,
+.nav_link:focus {
+    color: var(--main-color);
+    text-decoration: underline;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav_link:active {
+    color: #2056a8;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
 }
 
 .hero_section {
@@ -1170,6 +1182,19 @@ section {
     color: #000;
 }
 
+.footer__anchor:hover,
+.footer__anchor:focus {
+    color: var(--main-color);
+    text-decoration: underline;
+    transition: all 0.2s ease-in-out;
+}
+
+.footer__anchor:active {
+    color: #2056a8;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
 .footer__right_side {
     max-width: 366px;
     display: flex;
@@ -1387,6 +1412,7 @@ section {
         overflow-x: scroll;
         display: flex;
         flex-wrap: nowrap;
+        overflow-y: hidden;
     }
 
     .nav_link {

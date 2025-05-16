@@ -2,7 +2,7 @@ import { startTimer } from "./widgets/timer.js";
 import { faq } from "./widgets/faq.js";
 import { modal } from "./widgets/modal.js";
 import { Carousel } from "./widgets/carousel.js";
-import { TeachersCarousel } from "./widgets/teachersCarosel.js";
+import { TeachersCarousel } from "./widgets/teachersCarousel.js";
 import { SmoothScroll } from "./widgets/smoothScroll.js";
 
 const smoothScroll = new SmoothScroll({

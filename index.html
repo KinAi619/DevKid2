@@ -100,105 +100,7 @@
             </nav>
         </header>
 
-        <!-- Модальное окно -->
-        <div tabindex="0" role="button" class="modal">
-            <div class="modal_overlay"></div>
-            <div class="modal_content" tabindex="0" role="button">
-                <button
-                    type="button"
-                    class="close_btn"
-                    aria-label="Закрыть модальное окно"
-                >
-                    <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M1 15L15 1.25071"
-                            stroke="#3579F4"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                        />
-                        <path
-                            d="M1 1L15 14.7493"
-                            stroke="#3579F4"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                        />
-                    </svg>
-                </button>
-
-                <h3 class="modal__header">
-                    Оставьте свои контакты для связи и получите консультацию от
-                    наших специалистов
-                </h3>
-                <p class="modal__header_descr">
-                    Оставьте заявку, и мы рассчитаем самый благоприятный график
-                    для лекции.
-                </p>
-
-                <form class="modal__form" method="POST" action="#">
-                    <div class="modal__input_group">
-                        <label class="modal__label" for="modal__input_name"
-                            >Введите ваше имя</label
-                        >
-                        <input
-                            required
-                            placeholder="Введите ваше имя"
-                            class="modal__input input__name"
-                            type="text"
-                            id="modal__input_name"
-                            maxlength="100"
-                        />
-                    </div>
-                    <div class="modal__input_group">
-                        <label class="modal__label" for="modal__input_phone"
-                            >Введите номер телефона</label
-                        >
-                        <input
-                            required
-                            placeholder="+7 (___) ___-__-__"
-                            class="modal__input input__tel"
-                            type="tel"
-                            id="modal__input_phone"
-                            maxlength="18"
-                        />
-                    </div>
-                    <div class="modal__comment_field">
-                        <label
-                            class="modal__label modal__textarea_label"
-                            for="modal__comment"
-                        >
-                            * Ваш Комментарий &nbsp;
-                            <em class="modal__label__hint">(не обязательно)</em>
-                        </label>
-                        <textarea
-                            class="modal__input"
-                            name="modal__comment"
-                            id="modal__comment"
-                            bind:value="{comment}"
-                            placeholder="Комментарий..."
-                            aria-describedby="comment-hint"
-                            rows="4"
-                        >
-                        </textarea>
-                    </div>
-
-                    <div class="modal__btn_group">
-                        <button class="btn modal__btn" type="submit">
-                            Попробовать бесплатно
-                        </button>
-                        <p class="modal__btn_descr">
-                            Нажимая кнопку вы соглашаетесь с политикой
-                            конфиденциальности
-                        </p>
-                    </div>
-                </form>
-            </div>
-        </div>
+        
 
         <main>
             <!-- hero -->
@@ -217,7 +119,7 @@
                             востребованную профессию в ведущих IT-компаниях
                         </p>
                         <div class="hero__btn_container">
-                            <button class="hero__btn btn">
+                            <button class="hero__btn btn btn_sign_up">
                                 Записаться на пробный урок
                             </button>
                             <span class="hero__price">за 0₽&nbsp;</span>
@@ -261,7 +163,7 @@
                             />
                         </svg>
                         <h4 class="under_hero__article__header">
-                            “Живые” уроки онлайн, а не в записи
+                            "Живые" уроки онлайн, а не в записи
                         </h4>
                         <p class="under_hero__article__p">
                             Здесь всегда круто!
@@ -654,7 +556,7 @@
                             <em class="sign_up__header__em">бесплатно</em>
                         </h2>
                         <div class="sign_up__btn_container">
-                            <button class="sign_up__btn btn">
+                            <button class="sign_up__btn btn btn_sign_up">
                                 Запись бесплатно
                             </button>
                             <span class="sign_up__price">за 0₽&nbsp;</span>
@@ -699,7 +601,7 @@
                                 <p class="sign_up__form__sub">
                                     Нажимая на кнопку
                                     <em class="sign_up__form__sub__em">
-                                        “Отправить”
+                                        "Отправить"
                                     </em>
                                     я соглашаюсь с политикой конфиденциальности
                                     организации
@@ -782,7 +684,7 @@
                         </article>
                     </div>
                 </div>
-                <button class="advantages__btn btn">
+                <button class="advantages__btn btn btn_sign_up">
                     Записать на пробный урок
                 </button>
             </section>
@@ -910,7 +812,7 @@
                         Не просто даем знания, а увлекаем программированием,
                         формируя полезные привычки в цифровой среде
                     </h3>
-                    <button class="motivation__btn btn">
+                    <button class="motivation__btn btn btn_sign_up">
                         Попробовать бесплатно
                     </button>
                     <img
@@ -980,7 +882,7 @@
                         </article>
                     </div>
 
-                    <button class="teams__btn btn">
+                    <button class="teams__btn btn btn_sign_up">
                         Заказать звонок специалиста
                     </button>
                 </div>
@@ -1069,7 +971,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="price__btn btn">
+                    <button class="price__btn btn btn_sign_up">
                         Записать на пробный урок
                     </button>
                 </div>
@@ -1088,7 +990,7 @@
                     >
                         02:00:00
                     </div>
-                    <button class="promo__btn btn">
+                    <button class="promo__btn btn btn_sign_up">
                         Записаться на полный курс
                     </button>
                 </div>
@@ -1322,7 +1224,7 @@
                                 <p class="sign_up__form__sub">
                                     Нажимая на кнопку
                                     <em class="sign_up__form__sub__em">
-                                        “Отправить”
+                                        "Отправить"
                                     </em>
                                     я соглашаюсь с политикой конфиденциальности
                                     организации
@@ -1495,6 +1397,106 @@
                 </div>
             </div>
         </footer>
+
+        <!-- Модальное окно -->
+        <div tabindex="0" role="button" class="modal">
+            <div class="modal_overlay"></div>
+            <div class="modal_content" tabindex="0" role="button">
+                <button
+                    type="button"
+                    class="close_btn"
+                    aria-label="Закрыть модальное окно"
+                >
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M1 15L15 1.25071"
+                            stroke="#3579F4"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                        />
+                        <path
+                            d="M1 1L15 14.7493"
+                            stroke="#3579F4"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+                </button>
+
+                <h3 class="modal__header">
+                    Оставьте свои контакты для связи и получите консультацию от
+                    наших специалистов
+                </h3>
+                <p class="modal__header_descr">
+                    Оставьте заявку, и мы рассчитаем самый благоприятный график
+                    для лекции.
+                </p>
+
+                <form class="modal__form" method="POST" action="#">
+                    <div class="modal__input_group">
+                        <label class="modal__label" for="modal__input_name"
+                            >Введите ваше имя</label
+                        >
+                        <input
+                            required
+                            placeholder="Введите ваше имя"
+                            class="modal__input input__name"
+                            type="text"
+                            id="modal__input_name"
+                            maxlength="100"
+                        />
+                    </div>
+                    <div class="modal__input_group">
+                        <label class="modal__label" for="modal__input_phone"
+                            >Введите номер телефона</label
+                        >
+                        <input
+                            required
+                            placeholder="+7 (___) ___-__-__"
+                            class="modal__input input__tel"
+                            type="tel"
+                            id="modal__input_phone"
+                            maxlength="18"
+                        />
+                    </div>
+                    <div class="modal__comment_field">
+                        <label
+                            class="modal__label modal__textarea_label"
+                            for="modal__comment"
+                        >
+                            * Ваш Комментарий &nbsp;
+                            <em class="modal__label__hint">(не обязательно)</em>
+                        </label>
+                        <textarea
+                            class="modal__input"
+                            name="modal__comment"
+                            id="modal__comment"
+                            bind:value="{comment}"
+                            placeholder="Комментарий..."
+                            aria-describedby="comment-hint"
+                            rows="4"
+                        >
+                        </textarea>
+                    </div>
+
+                    <div class="modal__btn_group">
+                        <button class="btn modal__btn" type="submit">
+                            Попробовать бесплатно
+                        </button>
+                        <p class="modal__btn_descr">
+                            Нажимая кнопку вы соглашаетесь с политикой
+                            конфиденциальности
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <script defer type="module" src="./main.js"></script>
     </body>

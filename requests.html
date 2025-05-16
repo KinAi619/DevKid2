@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Заявки | DevKid</title>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body { background: #f7faff; }
+        .requests-container { max-width: 900px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 16px #3579f41a; padding: 32px; }
+        h1 { color: var(--main-color); margin-bottom: 32px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px 10px; border-bottom: 1px solid #e3e3e3; text-align: left; }
+        th { background: #e7ebfc; color: #2056a8; font-weight: 700; }
+        tr:last-child td { border-bottom: none; }
+        .empty { color: #aaa; text-align: center; padding: 40px 0; }
+    </style>
+</head>
+<body>
+    <div class="requests-container">
+        <h1>Список заявок</h1>
+        <label style="display:block;margin-bottom:18px;">
+            Фильтр по статусу:
+            <select id="status-filter" style="margin-left:10px;padding:4px 10px;">
+                <option value="">Все</option>
+                <option value="необработанная">Необработанные</option>
+                <option value="готово">Готово</option>
+                <option value="отмена">Отмена</option>
+                <option value="в работе">В работе</option>
+            </select>
+        </label>
+        <table id="requests-table">
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Телефон</th>
+                    <th>Комментарий</th>
+                    <th>Дата</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5" class="empty">Загрузка...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let allRequests = [];
+        const statusOptions = [
+            'необработанная',
+            'готово',
+            'отмена',
+            'в работе'
+        ];
+        async function loadRequests() {
+            const tbody = document.querySelector("#requests-table tbody");
+            try {
+                const res = await fetch("http://localhost:3001/api/requests");
+                allRequests = await res.json();
+                renderRequests();
+            } catch (e) {
+                tbody.innerHTML = '<tr><td colspan="5" class="empty">Ошибка загрузки</td></tr>';
+            }
+        }
+        function renderRequests() {
+            const tbody = document.querySelector("#requests-table tbody");
+            const filter = document.getElementById('status-filter').value;
+            const filtered = filter ? allRequests.filter(r => r.status === filter) : allRequests;
+            if (!filtered.length) {
+                tbody.innerHTML = '<tr><td colspan="5" class="empty">Нет заявок</td></tr>';
+                return;
+            }
+            tbody.innerHTML = filtered.map((r, i) => {
+                // Найти индекс в allRequests для PATCH
+                const realIndex = allRequests.indexOf(r);
+                return `
+                    <tr>
+                        <td>${r.name ? r.name.replace(/</g, "&lt;") : ""}</td>
+                        <td>${r.phone ? r.phone.replace(/</g, "&lt;") : ""}</td>
+                        <td>${r.comment ? r.comment.replace(/</g, "&lt;") : ""}</td>
+                        <td>${r.date ? new Date(r.date).toLocaleString("ru-RU") : ""}</td>
+                        <td>
+                            <select data-index="${realIndex}" style="padding:2px 8px;">
+                                ${statusOptions.map(opt => `<option value="${opt}"${r.status===opt?" selected":''}>${opt}</option>`).join('')}
+                            </select>
+                        </td>
+                    </tr>
+                `;
+            }).join("");
+        }
+        document.getElementById('status-filter').addEventListener('change', renderRequests);
+        document.querySelector('#requests-table').addEventListener('change', async function(e) {
+            if (e.target.tagName === 'SELECT' && e.target.hasAttribute('data-index')) {
+                const idx = e.target.getAttribute('data-index');
+                const newStatus = e.target.value;
+                await fetch(`http://localhost:3001/api/requests/${idx}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: newStatus })
+                });
+                allRequests[idx].status = newStatus;
+                renderRequests();
+            }
+        });
+        loadRequests();
+    </script>
+</body>
+</html>
